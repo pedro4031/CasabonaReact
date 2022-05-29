@@ -1,8 +1,12 @@
-import logo from "./logo.svg";
 import "./App.css";
+import NavBar from "./components/NavBar";
 
 function App() {
-  return <h1>Aplicacion React en curso...</h1>;
+  return (
+    <>
+      <NavBar />
+    </>
+  );
 }
 
 export default App;

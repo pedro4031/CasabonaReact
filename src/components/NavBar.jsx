@@ -1,8 +1,9 @@
 import React from "react";
+import CartWidget from "./CartWidget";
 
 export default function NavBar() {
   return (
-    <nav className="navbar fixed-top navbar-expand-md navbar-dark bg-dark">
+    <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
         <a className="navbar-brand" href="#">
           Diaz%
@@ -19,7 +20,7 @@ export default function NavBar() {
           <span className="navbar-toggler-icon"></span>
         </button>
         <div className="collapse navbar-collapse" id="navBarHamburguerMenu">
-          <ul className="navbar-nav me-auto mb-2 mb-lg-0">
+          <ul className="navbar-nav me-auto ">
             <li className="nav-item">
               <a className="nav-link active" aria-current="page" href="#">
                 INICIO
@@ -56,10 +57,11 @@ export default function NavBar() {
             </li>
             <li className="nav-item">
               <a className="nav-link " href="#">
-                OFERTAS/DESCUENTOS
+                OFERTAS
               </a>
             </li>
           </ul>
+          <CartWidget cantProds={0} />
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"

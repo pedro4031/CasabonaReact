@@ -6,8 +6,9 @@ export default function ItemList({ items }) {
     <>
       <h5 className="ms-3">Catalogo:</h5>
       <div className="d-flex flex-wrap">
-        {items.map((item) => (
+        {items?.map((item) => (
           <Item
+            key={item.id}
             titulo={item.titulo}
             descripcion={item.descripcion}
             stock={item.stock}

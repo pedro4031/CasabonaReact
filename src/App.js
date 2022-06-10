@@ -3,6 +3,7 @@ import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
 import ItemCount from "./components/ItemCount";
 import { useState } from "react";
+import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
   const [stock, setStock] = useState(16);
@@ -15,6 +16,7 @@ function App() {
       <NavBar />
       <ItemCount stock={stock} initial={1} comprarItem={comprarItem} />
       <ItemListContainer />
+      <ItemDetailContainer />
     </>
   );
 }

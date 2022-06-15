@@ -1,32 +1,24 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
+import { useParams } from "react-router-dom";
 
 export default function ItemDetailContainer() {
   const [producto, setProducto] = useState({});
+  const { id } = useParams();
 
   useEffect(() => {
-    const detalles = new Promise((res, rej) => {
-      setTimeout(() => {
-        fetch("item.json")
-          .then((dataJ) => dataJ.json())
-          .then((data) => res(data))
-          .catch((error) =>
-            rej(
-              console.log(
-                "Error en el funcionamiento de la pagina. Recargue la pagina..." +
-                  error
-              )
-            )
-          );
-      }, 2000);
-    });
+    fetch("http://localhost:3000/productos.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setProducto(data.find((producto) => producto.id == id));
+      })
+      .catch((e) => console.log(e));
+  }, [id]);
 
-    detalles
-      .then((data) => setProducto(data))
-      .catch(() =>
-        alert("Error en carga de la pagina. Por favor recargue la pagina...")
-      );
-  }, []);
-
-  return <ItemDetail producto={producto} />;
+  return (
+    <div className="container">
+      <h1 className="mt-3">Detalles del producto:</h1>
+      <ItemDetail producto={producto} />
+    </div>
+  );
 }

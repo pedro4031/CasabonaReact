@@ -1,8 +1,8 @@
 import "./App.css";
+import { useState } from "react";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import NavBar from "./components/NavBar";
 import ItemListContainer from "./components/ItemListContainer";
-import ItemCount from "./components/ItemCount";
-import { useState } from "react";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 
 function App() {
@@ -13,10 +13,15 @@ function App() {
   };
   return (
     <>
-      <NavBar />
-      <ItemCount stock={stock} initial={1} comprarItem={comprarItem} />
-      <ItemListContainer />
-      <ItemDetailContainer />
+      <BrowserRouter>
+        <NavBar />
+        <Routes>
+          <Route path="/" element={<ItemListContainer />} />
+          <Route path="/home" element={<ItemListContainer />} />
+          <Route path="/categorias/:id" element={<ItemListContainer />} />
+          <Route path="/producto/:id" element={<ItemDetailContainer />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

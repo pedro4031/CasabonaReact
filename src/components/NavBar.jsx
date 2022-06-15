@@ -1,13 +1,14 @@
 import React from "react";
 import CartWidget from "./CartWidget";
+import { Link } from "react-router-dom";
 
 export default function NavBar() {
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
-        <a className="navbar-brand" href="#">
+        <Link className="navbar-brand" to="/">
           Diaz%
-        </a>
+        </Link>
         <button
           className="navbar-toggler"
           type="button"
@@ -22,43 +23,56 @@ export default function NavBar() {
         <div className="collapse navbar-collapse" id="navBarHamburguerMenu">
           <ul className="navbar-nav me-auto ">
             <li className="nav-item">
-              <a className="nav-link active" aria-current="page" href="#">
+              <Link className="nav-link active" aria-current="page" to="/">
                 INICIO
-              </a>
+              </Link>
             </li>
             <li className="nav-item dropdown">
-              <a
+              <Link
                 className="nav-link dropdown-toggle"
-                href="#"
+                to="#"
                 id="navbarDropdown"
                 role="button"
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                USUARIOS
-              </a>
+                CATEGORIAS
+              </Link>
               <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Aministradores
-                  </a>
+                  <Link className="dropdown-item" to="/categorias/celulares">
+                    CELULARES
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Clientes
-                  </a>
+                  <Link className="dropdown-item" to="/categorias/comida">
+                    COMIDA
+                  </Link>
                 </li>
                 <li>
-                  <a className="dropdown-item" href="#">
-                    Crear Cuenta
-                  </a>
+                  <Link className="dropdown-item" to="/categorias/juguetes">
+                    JUGUETES
+                  </Link>
+                </li>
+                <li>
+                  <Link className="dropdown-item" to="/categorias/ropa">
+                    ROPA
+                  </Link>
+                </li>
+                <li>
+                  <Link
+                    className="dropdown-item"
+                    to="/categorias/electrodomesticos"
+                  >
+                    ELECTRODOMESTICOS
+                  </Link>
                 </li>
               </ul>
             </li>
             <li className="nav-item">
-              <a className="nav-link " href="#">
+              <Link className="nav-link " to="#">
                 OFERTAS
-              </a>
+              </Link>
             </li>
           </ul>
           <CartWidget cantProds={0} />

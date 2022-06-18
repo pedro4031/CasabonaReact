@@ -2,14 +2,12 @@ import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareMinus, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 
-export default function ItemCount({ stock, initial, comprarItem }) {
+export default function ItemCount({ stock, initial, onAdd }) {
   const [cant, setCant] = useState(initial);
 
   return (
     <div className="card m-3" style={{ maxWidth: 200 }}>
       <div className="card-body ">
-        <h5 className="card-title">Pelota</h5>
-        <h5 className="card-subtitle mb-2 text-muted">Stock:{stock}</h5>
         <p
           className="card-text d-flex px-1 border border-dark rounded d-flex justify-content-between"
           style={{ maxWidth: 80 }}
@@ -41,10 +39,11 @@ export default function ItemCount({ stock, initial, comprarItem }) {
             />
           </span>
         </p>
+
         <button
           className="btn btn-success"
           onClick={() => {
-            comprarItem(cant);
+            onAdd(cant);
           }}
         >
           Agregar al Carrito

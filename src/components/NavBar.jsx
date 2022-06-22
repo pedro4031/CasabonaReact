@@ -75,7 +75,7 @@ export default function NavBar() {
               </Link>
             </li>
           </ul>
-          <CartWidget cantProds={0} />
+          <CartWidget />
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"

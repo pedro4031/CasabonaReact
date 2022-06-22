@@ -1,20 +1,13 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
-import { Link } from "react-router-dom";
+import React, { useContext } from "react";
+import { MiContexto } from "../context/CartContext";
 import ItemCount from "./ItemCount";
 
 export default function ItemDetail({ producto }) {
-  const [Stock, setStock] = useState(producto.stock);
-  const [mostrar, setMostrar] = useState(true);
-
-  useEffect(() => {
-    setStock(producto.stock);
-  }, [producto.stock]);
+  const { addItem } = useContext(MiContexto);
 
   function onAdd(cant) {
-    if (Stock - cant >= 0) {
-      setStock(Stock - cant);
-      setMostrar(false);
+    if (producto.stock - cant >= 0) {
+      addItem(producto, cant);
     } else alert("Stock insuficiente.");
   }
 
@@ -34,16 +27,10 @@ export default function ItemDetail({ producto }) {
         <p className="fs-3 text">Marca: {producto.marca}</p>
         <p className="fs-3 text">Descripción: {producto.descripcion}</p>
         <div className="fs-3 text text-muted mb-4">
-          Stock disponible:{Stock}
+          Stock disponible:{producto.stock}
         </div>
 
-        {mostrar ? (
-          <ItemCount initial={1} stock={Stock} onAdd={onAdd} />
-        ) : (
-          <Link className="btn btn-success" to="/cart">
-            Terminar compra
-          </Link>
-        )}
+        <ItemCount initial={1} stock={producto.stock} onAdd={onAdd} />
       </div>
     </div>
   );

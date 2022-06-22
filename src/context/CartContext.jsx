@@ -3,10 +3,13 @@ import React, { useState, createContext, useEffect } from "react";
 export const MiContexto = createContext({});
 
 export default function CartContext({ children }) {
-  const [carrito, setCarrito] = useState([]);
+  const [carrito, setCarrito] = useState(
+    JSON.parse(localStorage.getItem("carrito")) || []
+  );
   const [ProdsTotales, setProdsTotales] = useState({});
 
   useEffect(() => {
+    localStorage.setItem("carrito", JSON.stringify(carrito));
     let cantTotal = 0;
     let precioTotal = 0;
     carrito.forEach((producto) => {

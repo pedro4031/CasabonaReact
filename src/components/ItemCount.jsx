@@ -24,6 +24,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
               size="lg"
               id="restar"
               className="me-2"
+              type="button"
             />
           </span>
 
@@ -38,6 +39,7 @@ export default function ItemCount({ stock, initial, onAdd }) {
               size="lg"
               id="sumar"
               className="ms-2"
+              type="button"
             />
           </span>
         </p>

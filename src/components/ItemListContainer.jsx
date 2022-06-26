@@ -1,22 +1,28 @@
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
+import { getFirestore, getDocs, collection } from "firebase/firestore";
 import ItemList from "./ItemList";
 
 export default function ItemListContainer() {
   const { id } = useParams();
   const [productos, setProductos] = useState([]);
 
+  const db = getFirestore();
+  const coleccion = "items";
+  const coleccionDeProductos = collection(db, coleccion);
+
   useEffect(() => {
-    fetch("http://localhost:3000/productos.json")
-      .then((res) => res.json())
-      .then((data) => {
+    getDocs(coleccionDeProductos)
+      .then((data) =>
+        data.docs.map((prod) => ({ id: prod.id, ...prod.data() }))
+      )
+      .then((prods) => {
         if (id == undefined) {
-          setProductos(data);
-        } else
-          setProductos(data.filter((producto) => producto.categoria == id));
-      })
-      .catch((e) => console.log(e));
+          setProductos(prods);
+        } else {
+          setProductos(prods.filter((cat) => cat.categoria == id));
+        }
+      });
   }, [id]);
 
   return (

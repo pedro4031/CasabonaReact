@@ -1,8 +1,10 @@
 import React from "react";
 import CartWidget from "./CartWidget";
 import { Link } from "react-router-dom";
-
+import { MiContexto } from "../context/CartContext";
+import { useContext } from "react";
 export default function NavBar() {
+  const { carrito } = useContext(MiContexto);
   return (
     <nav className="navbar navbar-expand-md navbar-dark bg-dark">
       <div className="container-fluid">
@@ -75,7 +77,8 @@ export default function NavBar() {
               </Link>
             </li>
           </ul>
-          <CartWidget />
+          {carrito.length > 0 && <CartWidget />}
+
           <form className="d-flex" role="search">
             <input
               className="form-control me-2"

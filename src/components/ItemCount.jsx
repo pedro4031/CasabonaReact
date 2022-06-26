@@ -1,9 +1,11 @@
 import React, { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faSquareMinus, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { Link } from "react-router-dom";
 
 export default function ItemCount({ stock, initial, onAdd }) {
   const [cant, setCant] = useState(initial);
+  const [mostrar, setMostrar] = useState(true);
 
   return (
     <div className="card m-3" style={{ maxWidth: 200 }}>
@@ -40,14 +42,21 @@ export default function ItemCount({ stock, initial, onAdd }) {
           </span>
         </p>
 
-        <button
-          className="btn btn-success"
-          onClick={() => {
-            onAdd(cant);
-          }}
-        >
-          Agregar al Carrito
-        </button>
+        {mostrar ? (
+          <button
+            className="btn btn-success"
+            onClick={() => {
+              onAdd(cant);
+              setMostrar(false);
+            }}
+          >
+            Agregar al Carrito
+          </button>
+        ) : (
+          <Link className="btn btn-success" to={`/carrito`}>
+            Ir al carrito
+          </Link>
+        )}
       </div>
     </div>
   );

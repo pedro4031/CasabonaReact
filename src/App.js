@@ -6,6 +6,7 @@ import ItemDetailContainer from "./components/ItemDetailContainer";
 import Cart from "./components/Cart";
 import CartContext from "./context/CartContext";
 import { initializeApp } from "firebase/app";
+import Formulario from "./components/Formulario";
 
 function App() {
   const firebaseConfig = {
@@ -29,6 +30,7 @@ function App() {
           <Route path="/carrito" element={<Cart />} />
           <Route path="/categorias/:id" element={<ItemListContainer />} />
           <Route path="/producto/:id" element={<ItemDetailContainer />} />
+          <Route path="/compra" element={<Formulario />} />
         </Routes>
       </BrowserRouter>
     </CartContext>

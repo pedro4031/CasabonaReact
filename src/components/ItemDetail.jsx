@@ -13,15 +13,14 @@ export default function ItemDetail({ producto }) {
 
   return (
     <div className="row align-items-center">
-      <div className="col-6 d-flex justify-content-center">
+      <div className="col-md-6 col-12 d-flex justify-content-center">
         <img
           src={producto.img}
-          className=" img-fluid img-thumbnail border-dark border-3"
+          className=" img-fluid img-thumbnail border-dark border-3 mb-3"
           alt="foto del producto"
-          style={{ height: 600 }}
         />
       </div>
-      <div className="col-6 ">
+      <div className="col-md-6 col-12 ">
         <h2 className="fs-2 text">{producto.nombre}</h2>
         <p className="fs-3 text">Precio: ${producto.precio}</p>
         <p className="fs-3 text">Marca: {producto.marca}</p>

@@ -8,10 +8,13 @@ export default function ItemCount({ stock, initial, onAdd }) {
   const [mostrar, setMostrar] = useState(true);
 
   return (
-    <div className="card m-3" style={{ maxWidth: 200 }}>
-      <div className="card-body ">
+    <div
+      className="card m-3 border border-dark "
+      style={{ maxWidth: 200, backgroundColor: "rgb(179, 229, 247)" }}
+    >
+      <div className="card-body text-center">
         <p
-          className="card-text d-flex px-1 border border-dark rounded d-flex justify-content-between"
+          className="card-text d-flex mx-auto mb-2 px-1 border border-dark rounded d-flex justify-content-between "
           style={{ maxWidth: 80 }}
         >
           <span

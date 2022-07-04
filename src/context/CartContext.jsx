@@ -47,10 +47,7 @@ export default function CartContext({ children }) {
   function clear() {
     setCarrito([]);
   }
-  function comprar() {
-    clear();
-    alert("Gracias por su compra");
-  }
+
   return (
     <MiContexto.Provider
       value={{
@@ -58,7 +55,6 @@ export default function CartContext({ children }) {
         addItem,
         removeItem,
         clear,
-        comprar,
         carrito,
         ProdsTotales,
       }}

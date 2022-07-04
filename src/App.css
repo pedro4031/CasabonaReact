@@ -36,3 +36,7 @@
     transform: rotate(360deg);
   }
 }
+
+.formulario {
+  max-width: 25rem;
+}

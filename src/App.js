@@ -5,8 +5,9 @@ import ItemListContainer from "./components/ItemListContainer";
 import ItemDetailContainer from "./components/ItemDetailContainer";
 import Cart from "./components/Cart";
 import CartContext from "./context/CartContext";
-import { initializeApp } from "firebase/app";
 import Formulario from "./components/Formulario";
+import { initializeApp } from "firebase/app";
+
 import { ToastContainer } from "react-toastify";
 
 function App() {

@@ -1,6 +1,42 @@
-#Supermercado online "DIAZ%".
+# Supermercado online "DIAZ%".
 
-Catalogo de productos varios(celulares,comida,juguetes,ropa,electrodomesticos).
+Esta pagina web se trata de un supermercado online donde se pueden hacer pedidos.
+Los catalogos de productos son varios(celulares,comida,juguetes,ropa,electrodomesticos). Al seleccionar un producto se pueden ver mas detalles del mismo.
+
+## Librerias utilizadas
+
+fontawesome "6.1.1": agregado de iconos para mejor vista de la pagina. https://fontawesome.com/
+
+bootstrap "5.1.3": estilos y acomodamiento de la pagina. https://getbootstrap.com/
+
+formik "2.2.9": estilos y organización de formulario para hacer el pedido. https://formik.org/
+
+yup "0.32.11": validación de formulario. https://www.npmjs.com/package/yup
+
+react-toastify "9.0.5": estilos para alerts. https://www.npmjs.com/package/react-toastify
+
+firebase "9.8.3": backend de la pagina y almacenamiento de pedidos. https://firebase.google.com/
+
+react-router-dom "6.3.0": optimización de links y rutas de la pagina. https://reactrouter.com/
+
+react "18.1.0": framework principal de la pagina. https://es.reactjs.org/
+
+## Instalación
+
+---
+
+Requisitos previos:
+
+-node.js https://nodejs.org/es/
+
+-git https://git-scm.com/
+
+```
+Comandos para descargar la pagina:
+$ git clone https://github.com/pedro4031/CasabonaReact.git
+$ cd ../path/to/the/file
+$ npm start
+```
 
 # Getting Started with Create React App
 

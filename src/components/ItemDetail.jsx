@@ -25,9 +25,7 @@ export default function ItemDetail({ producto }) {
         <p className="fs-3 text">Precio: ${producto.precio}</p>
         <p className="fs-3 text">Marca: {producto.marca}</p>
         <p className="fs-3 text">Descripción: {producto.descripcion}</p>
-        <div className="fs-3 text text-muted mb-4">
-          Stock disponible:{producto.stock}
-        </div>
+        <div className="fs-3 text mb-4">Stock disponible:{producto.stock}</div>
 
         <ItemCount initial={1} stock={producto.stock} onAdd={onAdd} />
       </div>

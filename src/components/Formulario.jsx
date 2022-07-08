@@ -9,12 +9,24 @@ import {
   faArrowLeftLong,
 } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import { useEffect } from "react";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 export default function Formulario() {
   const [finalizado, setFinalizado] = useState(false);
   const [id, setId] = useState("Cargando...");
   const { clear, carrito, ProdsTotales } = useContext(MiContexto);
+
+  const notify = () => {
+    toast.success("Pedido enviado.", {
+      position: "top-center",
+      autoClose: 2000,
+      hideProgressBar: true,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   const {
     values,
@@ -28,6 +40,7 @@ export default function Formulario() {
     initialValues: {
       nombre: "",
       email: "",
+      email2: "",
       celular: "",
     },
     validationSchema: basicSchema,
@@ -48,9 +61,11 @@ export default function Formulario() {
       total: ProdsTotales.precioTotal,
     };
 
-    addDoc(coleccionPedidos, orden).then(({ id }) => setId(id));
+    addDoc(coleccionPedidos, orden)
+      .then(({ id }) => setId(id))
+      .finally(setFinalizado(true));
     clear();
-    setFinalizado(true);
+    notify();
   }
 
   return (
@@ -140,6 +155,29 @@ export default function Formulario() {
                 />
                 {errors.email && touched.email && (
                   <p className="text-danger">{errors.email}</p>
+                )}
+              </div>
+              <div>
+                <label htmlFor="email2" className="form-label ">
+                  {" "}
+                  <strong>Volver a ingresar correo electrónico</strong>
+                </label>
+                <input
+                  value={values.email2}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  type="email"
+                  id="email2"
+                  name="email2"
+                  placeholder="ejemplo123@ejemplo.com"
+                  className={
+                    errors.email2
+                      ? "border-danger form-control mb-1"
+                      : "form-control mb-5"
+                  }
+                />
+                {errors.email2 && (
+                  <p className="text-danger">{errors.email2}</p>
                 )}
               </div>
               <div>

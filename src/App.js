@@ -7,6 +7,7 @@ import Cart from "./components/Cart";
 import CartContext from "./context/CartContext";
 import { initializeApp } from "firebase/app";
 import Formulario from "./components/Formulario";
+import { ToastContainer } from "react-toastify";
 
 function App() {
   const firebaseConfig = {
@@ -21,19 +22,22 @@ function App() {
   initializeApp(firebaseConfig);
 
   return (
-    <CartContext>
-      <BrowserRouter>
-        <NavBar />
-        <Routes>
-          <Route path="/" element={<ItemListContainer />} />
-          <Route path="/home" element={<ItemListContainer />} />
-          <Route path="/carrito" element={<Cart />} />
-          <Route path="/categorias/:id" element={<ItemListContainer />} />
-          <Route path="/producto/:id" element={<ItemDetailContainer />} />
-          <Route path="/compra" element={<Formulario />} />
-        </Routes>
-      </BrowserRouter>
-    </CartContext>
+    <>
+      <CartContext>
+        <BrowserRouter>
+          <NavBar />
+          <Routes>
+            <Route path="/" element={<ItemListContainer />} />
+            <Route path="/home" element={<ItemListContainer />} />
+            <Route path="/carrito" element={<Cart />} />
+            <Route path="/categorias/:id" element={<ItemListContainer />} />
+            <Route path="/producto/:id" element={<ItemDetailContainer />} />
+            <Route path="/compra" element={<Formulario />} />
+          </Routes>
+        </BrowserRouter>
+      </CartContext>
+      <ToastContainer />
+    </>
   );
 }
 

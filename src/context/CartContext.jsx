@@ -1,4 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export const MiContexto = createContext({});
 
@@ -7,6 +9,19 @@ export default function CartContext({ children }) {
     JSON.parse(localStorage.getItem("carrito")) || []
   );
   const [ProdsTotales, setProdsTotales] = useState({});
+
+  const notify = () => {
+    toast.error("Ya se encuentra en el carrito.", {
+      theme: "colored",
+      position: "top-center",
+      autoClose: 1500,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      draggable: true,
+      progress: undefined,
+    });
+  };
 
   useEffect(() => {
     localStorage.setItem("carrito", JSON.stringify(carrito));
@@ -27,7 +42,7 @@ export default function CartContext({ children }) {
 
   function addItem(producto, cant) {
     if (isInCart(producto.id)) {
-      alert("el producto ya se encuentra en el carrito");
+      notify();
     } else {
       setCarrito([
         ...carrito,
